@@ -24,8 +24,10 @@ public class Cart {
         System.out.println("🧺 장바구니");
         System.out.println("-".repeat(60));
 
+        printCartItemDetails();
+
         System.out.println("-".repeat(60));
-        System.out.printf("합계 : %d원\n", 100);
+        System.out.printf("합계 : %d원\n", calculateTotalPrice());
 
         System.out.println("이전으로 돌아가려면 엔터를 누르세요. ");
         scanner.nextLine();
