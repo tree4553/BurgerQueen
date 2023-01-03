@@ -21,6 +21,13 @@ public class BurgerSet extends Product {
         this.drink = drink;
     }
 
+    public BurgerSet(BurgerSet burgerSet) {
+        super(burgerSet.getName(), burgerSet.getPrice(), burgerSet.getKcal());
+        this.hamburger = burgerSet.getHamburger();
+        this.side = burgerSet.getSide();
+        this.drink = burgerSet.getDrink();
+    }
+
     public Hamburger getHamburger() {
         return hamburger;
     }

@@ -33,7 +33,7 @@ public class Cart {
         scanner.nextLine();
     }
 
-    private void printCartItemDetails() {
+    protected void printCartItemDetails() {
         for(Product product : items) {
             if(product instanceof BurgerSet) {
                 BurgerSet burgerSet = (BurgerSet) product;
@@ -73,7 +73,7 @@ public class Cart {
         }
     }
 
-    private int calculateTotalPrice() {
+    protected int calculateTotalPrice() {
         int totalPrice = 0;
         for (Product product : items) {
             totalPrice += product.getPrice();
@@ -90,6 +90,11 @@ public class Cart {
             Hamburger hamburger = (Hamburger) product;
             if (hamburger.isBurgerSet()) product = composeSet(hamburger);
         }
+        Product newProduct;
+        if(product instanceof Hamburger) newProduct = new Hamburger((Hamburger) product);
+        else if(product instanceof Side) newProduct = new Side((Side)product);
+        else if(product instanceof Drink) newProduct = new Drink((Drink)product);
+        else newProduct = new BurgerSet((BurgerSet)product);
 
         Product[] newItems = new Product[items.length + 1];
         System.arraycopy(items, 0, newItems, 0, items.length);
